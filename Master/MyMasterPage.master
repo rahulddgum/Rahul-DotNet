@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MyMasterPage.master.cs" Inherits="MyMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>     
+    </title>
+    <link rel="stylesheet" href="CSS/StyleSheet.css" type="text/css" /> 
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+    <body>
+
+        <link rel="stylesheet" href="Images/cover.jpg" type="text/css" />
+         <link rel="stylesheet" href="CSS/StyleSheet.css" type="text/css" /> 
+        <form id="First" runat="server">
+            <div> <h1 class="mainheading">Welcome To Our Page</h1></div>
+             <div class="wrapper">
+            
+            <div class="menu">
+                <ul >
+                    <li><a href="Login.aspx">Login</a></li>
+                    <li><a href="AboutUs.aspx">About Us</a></li>
+                    
+                </ul>
+
+            </div>     
+     </div>
+             <asp:ContentPlaceHolder id="Body" runat="server">
+       
+        </asp:ContentPlaceHolder>
+            
+            <div class="footer">
+            <h3>Copyright@Rahul.com</h3>
+        </div>
+        </form>
+    </body>
+</html>
