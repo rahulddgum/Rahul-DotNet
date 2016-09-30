@@ -1,0 +1,26 @@
+<div ng-app="myApp" w3-test-directive></div>
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        template : "I was made in a directive constructor!"
+    };
+});
+</script>
+----------------------------------------------------------
+<div ng-app="myApp" ng-controller="myCtrl">
+{{firstName +" "+lastName}}
+</div>
+<script>
+var app=angular.module("myApp",[]);
+app.controller("myCtrl", function($scope){
+$scope.firstName="Rahul";
+$scope.lastName="Didigum";}
+);
+</script>
+-----------------------------------------------------------------
+<div ng-app="" ng-init="names=[{name:'Rahul',country:'Texas'},{name:'Ramesh',country:'Texas'},{name:'Suresh',country:'Texas'}]">
+<ol>
+<li ng-repeat="x in names">{{x.name +" "+x.country}}</li>
+</div>
+-----------------------------------------------------------------------------------------------

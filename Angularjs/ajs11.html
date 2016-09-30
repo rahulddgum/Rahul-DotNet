@@ -1,0 +1,40 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+       <h3>When you click Like or Dislike button, the value of like/dislike will increase.</h3>
+         <table border="1" width="25%">
+              <tr>
+                 <th>Name</th>
+                 <th>Like</th>
+                 <th>Dislike</th>
+                 <th>Like/Dislike</th></tr>
+             <tr ng-repeat="x in technologies">
+                  <td>{{x.name}}</td>
+                   <td>{{x.like}}</td>
+                   <td>{{x.dislike}}</td>
+                   <td><input type="button" value="Like" ng-click="incrementlike(x)" />
+                            <input type="button" value="Dislike" ng-click="incrementdislike(x)" />
+                   </td></tr>
+              </table>
+<script>
+var app=angular.module('myApp', [ ]);
+app.controller('myCtrl',function($scope){
+  $scope.technologies= [
+               {name:'Asp.net',like:0,dislike:0},
+               {name:'C#',like:0,dislike:0},
+               {name:'Sql server',like:0,dislike:0},
+               {name:'Ado.net',like:0,dislike:0}
+];
+
+
+$scope.incrementlike=function(x){
+  x.like++;
+  };
+$scope.incrementdislike=function(x){
+  x.dislike++;
+   };
+});
+</script></body></html>
+
+                 

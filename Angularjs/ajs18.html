@@ -1,0 +1,39 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<table border="1" width="25%">
+   <tr>
+       <th>Name</th>
+       <th>Gender</th>
+       <th>Salary</th>
+   </tr>
+  <tr ng-repeat="x in employees">
+   <td>{{x.name}}</td>
+   <td>{{x.gender | genderChange}}</td>
+   <td>{{x.salary}}</td>
+  </tr>
+<table>
+</div>
+<script>
+   var app=angular.module('myApp',[ ]);
+      app.filter('genderChange',function(){
+           return function(y){
+            switch(y){
+                   case(1):
+                           return "Male";
+
+                   case(2):
+                           return "Female";
+
+                   case(3):
+                           return "Notspecified";
+  }
+}
+});
+app.controller('myCtrl',function($scope){
+    $scope.employees=[{name:'Rahul',gender:1,salary:25000},         {name:'Divya',gender:2,salary:35000},{name:'Suresh',gender:1,salary:28000},
+    {name:'XYZ',gender:3,salary:29000}
+];
+});
+</script></body></html>

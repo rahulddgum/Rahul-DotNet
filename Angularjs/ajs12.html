@@ -1,0 +1,35 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+ <div ng-app="myApp" ng-controller="myCtrl">
+Number Of Rows<input type="number" min="0" max="5" step="1" ng-model="rowLimit"/>
+</br></br>
+ <table border="2" width="25%">
+   <tr bgcolor='lightblue'>
+      <th>Name</th>
+      <th>Date of Birth</th>
+      <th>Gender</th>
+      <th>Salary (numbers)</th>
+      <th>Salary (currency)</th></tr>
+   <tr ng-repeat="x in employees | limitTo:rowLimit" >
+       <td style="color:red">{{x.name | uppercase}}</td>
+      <td>{{x.dob | date:"MM/dd/yyyy"}}</td>
+       <td>{{x.gender | lowercase}}</td>
+       <td>{{x.salary | number:2}}</td>
+       <td>{{x.salary | currency:"#"}}</td>
+     </tr>
+</table>
+<script>
+var app=angular.module('myApp', [ ]);
+app.controller('myCtrl', function($scope){
+$scope.employees=
+[{name:"Rahul",dob: new Date("May 21, 1980"),gender:"Male",salary:25000},
+   {name:"Suresh",dob: new Date("April 12, 1990"),gender:"Male",salary:28000},
+                               {name:"Divya",dob: new Date("May 15,1995"),gender:"Female",salary:35000},
+                               {name:"Anil",dob: new Date("March 15,1996"),gender:"Male",salary:25000},
+                                {name:"Narenl",dob: new Date("April 20, 1994"),gender:"Male",salary:25000},
+];
+$scope.rowLimit=3;
+});
+
+</script></body></html>

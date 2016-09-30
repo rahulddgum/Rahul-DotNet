@@ -1,0 +1,26 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>the name is {{firstName | uppercase}}</p>
+<p>the name is {{lastName | lowercase}}</p>
+<p>the Price is {{price | currency}}</p>
+<ol><li ng-repeat="y in names| filter : 'r'">{{y}}
+</li></ol>
+<ul>
+<li ng-repeat="x in countries | orderBy:'country'">{{x.name+" "+x.country}} </li>
+</ul>
+</div>
+<script>
+var app=angular.module('myApp',[]);
+app.controller('myCtrl',function($scope){
+$scope.firstName="Rahul";
+$scope.lastName="DIDIGUm";
+$scope.price=95;
+$scope.countries=[ {name:'Rahul',country:'Hyderabad'},{name:'Suresh',country:'Texas'},
+                                  {name:'Ramesh',country:'Dallas'},{name:'Ashok',country:'Missouri'}];
+$scope.names=[ 'Rajesh','Ashok','Ramesh','jagdeesh','narender','abhi'];
+}
+);
+</script>
+</body></html>

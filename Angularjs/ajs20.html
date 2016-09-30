@@ -1,0 +1,27 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+ <ul>
+    <li ng-repeat="x in countries" ng-init="parentIndex = $index">
+         {{x.name}} index= {{$index}}
+            <ul>
+                      <li ng-repeat="city in x.city">
+                           {{city.name}}-ParentIndex= {{parentIndex}},index={{$index}}
+                      </li>
+            </ul>
+     </li>
+ </ul>
+</div>
+<script>
+ var app=angular.module('myApp',[ ]);
+app.controller('myCtrl', function($scope){
+$scope.countries=[{ name:'India',
+                                  city:[{name:'Hyderabad'},{name:'Parsigutta'}]
+        
+},{ name:'USA',
+                                  city:[{name:'Texas'},{name:'Missouri'}]
+}];
+   
+});
+</script></body></html>
