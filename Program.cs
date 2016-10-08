@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Dynamic
+namespace EmployeeWindow
 {
-    public static class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            Console.WriteLine("Size of int: {0}", sizeof(int));
-            Console.WriteLine("Size of int: {0}", sizeof(float));
-            Console.WriteLine("Size of int: {0}", sizeof(char));
-            Console.WriteLine("Size of int: {0}", sizeof(double));
-            Console.ReadLine();
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }
