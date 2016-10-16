@@ -1,0 +1,60 @@
+Methods:
+
+    class Program
+    {
+        public int FindMax(int num1, int num2)  //parameter Method
+        {
+            /* local variable declaration */
+            int result;
+
+            if (num1 > num2)
+                result = num1;
+            else
+                result = num2;
+            return result;
+        }
+        static void Main(string[] args)
+        {
+            int a = 100;
+            int b = 200;
+            int result;
+            Program n = new Program();
+            result = n.FindMax(a, b);
+            Console.WriteLine("Max value is : {0}", result);
+            Console.ReadLine();
+        }
+    }
+------------------------------------------------------------------------------------------------------------
+Call-By-Value & Call-By-Reference:value is sent to the method...Reference Address is sent to the method. 
+
+    class Example
+    {
+        public void callByvalue(int a,string b)
+        {
+            Console.WriteLine("Values of a an b are");
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+        }
+        public void callByReference(ref string str)
+        {
+            Console.WriteLine("Enter the Extra Name");
+            String s = Console.ReadLine();
+            str = str + s;
+            Console.WriteLine("Values of String is"+" "+"{0}",str);
+        }
+    }
+namespace CallByValueandReference
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Example vr = new Example();
+            string m = "Rahul";
+            vr.callByvalue(200, m);
+            Console.Write("value in m is {0}", m);
+            vr.callByReference(ref m);
+            Console.Write("value in m is {0}", m);
+        }
+    }
+}

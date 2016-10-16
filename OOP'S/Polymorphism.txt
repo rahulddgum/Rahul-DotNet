@@ -1,0 +1,122 @@
+Polymorphism:
+The word polymorphism means having many forms. In object-oriented programming paradigm, polymorphism is often expressed as 'one interface, multiple functions'.
+
+Polymorphism can be static or dynamic. In static polymorphism, the response to a function is determined at the compile time. In dynamic polymorphism, it is decided at run-time.
+
+namespace StaticPolymorphism
+{
+   class Printdata
+   {
+      void print(int i)
+      {
+         Console.WriteLine("Printing int : {0}", i );
+      }
+
+      void print(double f)
+      {
+         Console.WriteLine("Printing float : {0}" , f);
+      }
+
+      void print(string s)
+      {
+         Console.WriteLine("Printing string : {0}", s);
+      }
+      static void Main(string[] args)
+      {
+         Printdata p = new Printdata();
+         p.print(5);
+         p.print(500.263);
+         p.print("Hello C++");
+         Console.ReadKey();
+      }
+   }
+}
+----------------------------------------------------------------------------------------
+Use of New Keywork:
+class BC
+{
+  public void Display()
+  {
+     System.Console.WriteLine("BC::Display");
+  }
+}
+
+class DC : BC
+{
+  new public void Display()
+  {
+     System.Console.WriteLine("DC::Display");
+  }
+}
+
+class Demo
+{
+  public static void Main()
+  {
+     BC b;
+     b = new BC();
+     b.Display();    
+  }
+}
+----------------------------------------------------------------------------------------
+Use of Virtual and Overriding
+    class Example
+    {
+        protected int height, width;
+        public Example(int a=0,int b = 0)
+        {
+            height = a;
+            width = b;
+        }
+        public virtual int area()
+        {
+            Console.WriteLine("Base area of parent");
+            return 0;
+        }
+    }
+    class Rectangle : Example
+    {
+        public Rectangle(int a=0,int b = 0): base(a,b)
+        {
+
+        }
+        public override int area()
+        {
+            Console.WriteLine("Area of rectangle is");
+            return (height * width);
+        }
+    }
+    class Circle : Example
+    {
+        public Circle(int a = 0, int b = 0) : base(a, b)
+        {
+        }
+        public override int area()
+        {
+            Console.WriteLine("Area of Triangle is");
+            return (height * width/2);
+        }
+    }
+    class Caller
+    {
+        public void caller(Example sh)
+        {
+            int a;
+            a = sh.area();
+            Console.WriteLine("area is {0}", a);
+        }
+    }
+namespace Polymorphism
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Caller cl = new Caller();
+            Rectangle r = new Rectangle(10,20);
+            Circle c = new Circle(20,30);
+            cl.caller(r);
+            cl.caller(c);
+        }
+    }
+}

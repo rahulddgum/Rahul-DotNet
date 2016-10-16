@@ -1,0 +1,34 @@
+Abstract Class:
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList animalList = new ArrayList();
+            animalList.Add(new Dog());
+            animalList.Add(new Cat());
+            animalList.Add(new Dog());
+            animalList.Add(new Dog());
+            foreach (FourLeggeAnimal animal in animalList)
+                Console.WriteLine(animal.Describe1());
+            Console.ReadKey();
+        }
+    }
+    public abstract class FourLeggeAnimal
+    {
+        public abstract string Describe1();
+    }
+    public class Dog : FourLeggeAnimal
+    {
+        public override string Describe1()
+        {
+            return "It is a Four legged animal";
+        }
+    }
+    class Cat : FourLeggeAnimal
+    {
+        public override string Describe1()
+        {
+            return "Yes Cat is also an animal";
+        }
+    }

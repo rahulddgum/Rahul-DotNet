@@ -1,0 +1,48 @@
+Abstract Class Example:
+
+namespace AbstractClass1
+{
+    public abstract class TemperatureConverter
+    {
+        public static double celsiustoFaren(string celsius)
+        {
+            double C = double.Parse(celsius);
+            double F = (C * 9 / 5) + 32;
+            return F;
+        }
+        public static double farentoCelsius(string faren)
+        {
+            double F = double.Parse(faren);
+            double C = (F - 32) * 5 / 9;
+            return C;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the choice of your converter");
+            Console.WriteLine("1.For convert celsius to Faren");
+            Console.WriteLine("2.For convert Faren to Celsius");
+            int R = int.Parse(Console.ReadLine());
+            switch (R)
+            {
+                case 1:
+                    Console.WriteLine("Enter the temperature in Celsius");
+                    double S = TemperatureConverter.celsiustoFaren(Console.ReadLine());
+                    Console.WriteLine("Result is {0}", S);
+                    break;
+
+                case 2:
+                    Console.WriteLine("Enter the temperature in Faren");
+                    double T = TemperatureConverter.farentoCelsius(Console.ReadLine());
+                    Console.WriteLine("Result is {0}", T);
+                    break;
+                default:
+                    Console.WriteLine("Enter the correct choice");
+                    break;       
+                    
+            }
+        }
+    }
+}

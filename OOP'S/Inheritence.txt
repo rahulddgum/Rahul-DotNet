@@ -1,0 +1,113 @@
+When creating a class, instead of writing completely new data members and member functions, the programmer can designate that the new class should inherit the members of an existing class. This existing class is called the base class, and the new class is referred to as the derived class.
+
+The idea of inheritance implements the IS-A relationship. For example, mammal IS A animal, dog IS-A mammal hence dog IS-A animal as well, and so on.
+Inheritence:
+namespace InheritanceApplication
+{
+   class Shape 
+   {
+      public void setWidth(int w)
+      {
+         width = w;
+      }
+      public void setHeight(int h)
+      {
+         height = h;
+      }
+      protected int width;
+      protected int height;
+   }
+
+   // Derived class
+   class Rectangle: Shape
+   {
+      public int getArea()
+      { 
+         return (width * height); 
+      }
+   }
+   
+   class RectangleTester
+   {
+      static void Main(string[] args)
+      {
+         Rectangle Rect = new Rectangle();
+
+         Rect.setWidth(5);
+         Rect.setHeight(7);
+
+         // Print the area of the object.
+         Console.WriteLine("Total area: {0}",  Rect.getArea());
+         Console.ReadKey();
+      }
+   }
+}
+------------------------------------------------------------------------------------------
+Multiple inheritence using Interface: 
+    class Example
+    {
+        protected int Height;
+        protected int Length;
+        public void getHeight(int x)
+        {
+             Height = x;
+        }
+        public void getLength(int x)
+        {
+             Length = x;
+        }
+    }
+    public interface Pincost
+    {
+        int getCost(int area);
+    }
+    class Test : Example, Pincost
+    {
+        public int getArea()
+        {
+            return Length * Height;
+        }
+        public int getCost(int area)
+        {
+            return area * 70;
+        }
+    }
+namespace MultipleInheritence
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int area;
+            int cost;
+            Test ts = new Test();
+            ts.getHeight(5);
+            ts.getLength(6);
+            area = ts.getArea();
+            cost = ts.getCost(area);
+            Console.WriteLine("Area is {0}", area);
+            Console.WriteLine("Total Cost is {0}", cost);
+        }
+    }
+}
+---------------------------------------------------------------------------------------
+Sealed Class:
+Sealed classes are used to restrict the inheritance feature of object oriented programming. Once a class is defined as a sealed class, the class cannot be inherited. In C#, the sealed modifier is used to define a class as sealed.
+using System;
+class Class1
+{
+    static void Main(string[] args)
+    {
+        SealedClass sealedCls = new SealedClass();
+        int total = sealedCls.Add(4, 5);
+        Console.WriteLine("Total = " + total.ToString());
+    }
+}
+sealed class SealedClass
+{
+    public int Add(int x, int y)
+    {
+        return x + y;
+    }
+}
+----------------------------------------------------------------------------------------------- 
