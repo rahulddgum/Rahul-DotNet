@@ -1,0 +1,19 @@
+we are writing db connection string in webform, if we want to change or modify the the database to another db we need to change all the webforms and need to build and redeploy which is time consuming process so, we are writing the connection string in web.config
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+-->To access these connecting string we need to use using system.configuration namespace and write the code in web page
+
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+string query="select * from student"
+con.open();
+sqlcommand cmd=new sqlcommand(query,con);
+sqldatareader rd=cmd.executereader();
+gridview.datasource=rd;
+gridview.databind();
+}//To close the connection

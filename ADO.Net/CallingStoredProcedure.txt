@@ -1,0 +1,42 @@
+-->Calling stored Procedures with o/p parameters:
+-->Create table and storedProcedure in Sqlserver as
+
+create table tblEmployee(EmployeeId int Identity,Name varchar(20),Gender varchar(10),Salary int)
+
+create procedure spAddEmployee
+@Name varchar(20),
+@Gender varchar(10),
+@Salary int,
+@EmployeeId int out
+as
+Begin
+  insert into tblEmployee values(@Name,@Gender,@Salary)
+ select @EmployeeId=scope.Identity()
+End
+
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+-->Use this stored procedure in webform under buttonclick function
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+
+sqlcommand cmd=new sqlcommand("spAddEmployee",con);
+cmd.commandType=system.data.CommandType.StoredPreocedure;
+
+cmd.Parameters.AddWithValues("@Name",txtName.Text);
+cmd.Parameters.AddWithValues("@Gender",dropdown.SelectedValue);
+cmd.Parameters.AddWithValues("@Salary",txtSalary.Text);
+
+SqlParameter outputParameter = new SqlParameter();
+outputParameter.ParameterName="@EmployeeId";
+outputParameter.SqlDbType=system.data.SqlDbType.Int;
+outputParameter.Direction=syatem.Data.ParameterDirection.output;
+
+con.open();
+cmd.ExecuteNonQuery();
+}

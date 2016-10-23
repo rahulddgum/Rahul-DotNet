@@ -1,0 +1,43 @@
+
+ADO
+
+ADO is base on COM : Component Object Modelling based.	
+ADO stores data in binary format.	
+ADO can’t be integrated with XML because ADO have limited access of XML.	
+ In ADO, data is provided by RecordSet.	
+ADO is connection oriented means it requires continuous active connection.
+ADO gives rows as single table view, it scans sequentially the rows using MoveNext method.	
+In ADO, You can create only Client side cursor.	
+Using a single connection instance, ADO can not handle multiple transactions.	
+----------------------------------------------------------------------------------------------------------------------------
+ADO.NET
+
+ADO.Net is based on CLR : Common Language Runtime based.
+ADO.Net stores data in XML format i.e. parsing of data.
+ADO.Net can be integrated with XML as having robust support of XML.
+In ADO.Net data is provided by DataSet or DataAdapter.
+ADO.Net is disconnected, does not need continuous connection.
+ADO.Net gives rows as collections so you can access any record and also can go through a table via loop.
+In ADO.Net, You can create both Client & Server side cursor.
+Using a single connection instance, ADO.Net can handle multiple transactions.
+
+---------------------------------------------------------------------------------------------------------------------------
+In Connection Oriented Data Access Architecture the application makes a connection to the Data Source and then interact with it through SQL requests using the same connection. In these cases the application stays connected to the database system even when it is not using any Database Operations.
+ADO.Net solves this problem by introduces a new component called Dataset. The DataSet is the central component in the ADO.NET Disconnected Data Access Architecture. A DataSet is an in-memory data store that can hold multiple tables at the same time. DataSets only hold data and do not interact with a Data Source.
+----------------------------------------------------------------------------------------------------------------------------
+ADO.Net Objects:
+DataSet
+SQLDataSetCommand
+SQLCommand
+SQLParameter
+SQLConnection
+SQLDataReader
+SQLError.
+-----------------------------------------------------------------------------------------------------------------------------
+.Net Data Provider:
+-->For Sql server------system.Data.SqlClient
+-->For Oracle-----------System.Data.OracleClient
+-->For Ole Db-----------System.Data.OleDb
+-->For ODBC-----------System.Data.Odbc
+-->For EntityClient-----------System.Data.EntityClient
+-->For SqlServerCompact-----------System.Data.SqlServerCe

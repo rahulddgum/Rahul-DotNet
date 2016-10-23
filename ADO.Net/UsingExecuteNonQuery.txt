@@ -1,0 +1,29 @@
+-->Using ExecuteNonQuery
+
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+Execute Nonquery:
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+
+sqlcommand cmd=new sqlcommand();
+cmd.Connection=con;
+con.open();
+
+cmd.CommandText="Delete from tblProduct where ProductId=4";
+int TotalRowsDeleted =cmd.ExecuteNonQuery();
+Response.write("Total Rows Deleted ="+TotalRowsDeleted .ToString());
+
+cmd.CommandText="insert into tblProduct values (4,'Ramesh',100,230)";
+TotalRowsInserted =cmd.ExecuteNonQuery();
+Response.write("Total Rows Inserted ="+TotalRowsInserted.ToString());
+
+cmd.CommandText="update tblProduct set QtyAvailable=200 where ProductId=2";
+TotalRowsUpdated =cmd.ExecuteNonQuery();
+Response.write("Total Rows Updated ="+TotalRowsUpdated .ToString());
+}//To close the connection

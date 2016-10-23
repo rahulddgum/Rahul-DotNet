@@ -1,0 +1,37 @@
+Using DataAdapter and Dataset with Stored Procedures:
+
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+--->using of dataset by Query
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+  sqlDataAdapter da = new sqlDataAdapter("select * from tblProducts",con);
+  Dataset ds = new Dataset();
+  da.Fill(ds);
+
+ Gridview.DataSource=ds;
+ Gridview.DataBind();
+}
+
+---> Using Stored Procedures in DataSet 
+-->Drag and Drop one textbox,Button,GridView as Id txtbox1,Display Value,gridView1
+
+--->Now write the code in Button_Click event:
+
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+  sqlDataAdapter da = new sqlDataAdapter("spProductById",con);
+  da.selectCommand.CommandType.StoreProcedure;
+  da.SelectCommand.Parameters.AddWithValues("@productId",txtbox1.Text);
+  Dataset ds = new Dataset();
+  da.Fill(ds);
+
+ Gridview.DataSource=ds;
+ Gridview.DataBind();
+}

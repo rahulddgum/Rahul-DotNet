@@ -1,0 +1,27 @@
+-->Loop through Next result using datareader
+
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+--->Design
+  Drag and Drop two gridview controls with id productGridview and categoriesGridview
+
+-->In webform load_page
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+SqlCommand cmd = new SqlCommand("Select * from Products; Select * from Categories",con);
+con.Open();
+using(SqldataReader dr = cmd.ExecuteReader())
+{
+  productsGridview.DataSource=dr;
+  productsGridview.DataBind();
+   while(dr.NextResult())
+   {
+      categoriesGridview.DataSource=dr;
+      categoriesGridview.DataBind();
+   }
+}

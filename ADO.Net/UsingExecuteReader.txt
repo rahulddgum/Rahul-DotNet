@@ -1,0 +1,19 @@
+-->When to use ExecuteReader,
+
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+-->ExecuteReader:
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+string query="select * from student"
+con.open();
+sqlcommand cmd=new sqlcommand(query,con);
+sqldatareader rd=cmd.executereader();
+gridview.datasource=rd;
+gridview.databind();
+}//To close the connection

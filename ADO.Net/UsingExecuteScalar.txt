@@ -1,0 +1,18 @@
+-->Using Execute Scalar:
+
+-->In web.config file:
+<configuration>
+<connectionStrings>
+<add name="Cons" connectionString="data source=.\SQLEXPRESS ;Initial Catalog=NewDb;Integrated Security=SSPI"
+/></connectionStrings></configuration>
+
+Execute Scalar:
+string CS=configurationManager.ConnectionStrings["Cons"].connectionString.toString();
+using(sqlconnection con =new sqlconnection("CS"))
+{
+string query="select count(id) from student";
+con.open();
+sqlcommand cmd=new sqlcommand(query,con);
+int NoRows=(int)cmd.ExecuteScalar();
+Response.Write("Total Rows =" +NoRows.ToString());
+}//To close the connection

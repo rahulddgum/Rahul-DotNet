@@ -1,0 +1,9 @@
+-->ADO.Net Connection using DataAdapter and DataSet:
+
+string cons="DataSource=.\SQLEXPRESS; Initial Catalog=Studentdb; Integrated security=SSPI"
+connection con =new connection("cons");
+string query="update table set columnname=name(int);"
+sqlcommand cmd=new sqlcommand(query,con);
+dataadapter dp=new dataadapter();
+dataset ds=new dataset();
+da.fill(ds);
