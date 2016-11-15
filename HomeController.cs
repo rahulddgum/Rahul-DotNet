@@ -4,14 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MyFirstMVC.Controllers
+namespace MVCAddingView.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
-        [HttpGet]
-        public ActionResult Hello_Index()
+        public ActionResult Index()
         {
+            ViewBag.Countries = new List<string>()
+            {
+                "India",
+                "USA",
+                "UK",
+                "Canada"
+            };
             return View();
         }
     }

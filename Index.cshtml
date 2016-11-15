@@ -1,2 +1,26 @@
-﻿
-<h2>@ViewBag.Myname is great</h2>
+﻿@model MVCUsingEntityFramework.Models.Employee
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+       <b><td>EmployeeId</td></b>
+        <td>@Model.EmployeeId</td>
+    </tr>
+    <tr>
+        <b><td>Name:</td></b>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <b><td>Age:</td></b>
+        <td>@Model.Age</td>
+    </tr>
+    <tr>
+        <b><td>Salary</td></b>
+        <td>@Model.Salary</td>
+    </tr>
+</table>
